@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đang chuyển hướng đến Shopee...</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #ee4d2d;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Đang mở ứng dụng Shopee...</h2>
+    <div class="loader"></div>
+    <p>
+      Nếu hệ thống không tự chuyển, vui lòng bấm vào nút bên dưới và chọn
+      <b>"Mở bằng trình duyệt" (Chrome/Safari)</b>
+    </p>
+    <a
+      id="shopee-link"
+      href="#"
+      style="
+        padding: 10px 20px;
+        background: #ee4d2d;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      "
+      >Đến Shopee ngay</a
+    >
+
+    <script>
+      // Lấy link affiliate từ tham số URL, ví dụ: domain.com/?url=https://shope.ee/abc
+      const urlParams = new URLSearchParams(window.location.search);
+      const affiliateUrl = urlParams.get("url");
+
+      if (affiliateUrl) {
+        document.getElementById("shopee-link").href = affiliateUrl;
+        // Tự động chuyển hướng sau 1 giây
+        setTimeout(() => {
+          window.location.href = affiliateUrl;
+        }, 1000);
+      } else {
+        document.body.innerHTML =
+          "<h2>Lỗi: Không tìm thấy liên kết sản phẩm.</h2>";
+      }
+    </script>
+  </body>
+</html>
