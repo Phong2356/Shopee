@@ -50,22 +50,16 @@
     >
 
     <script>
-      // 1. Lấy đường dẫn hiện tại trên trình duyệt (VD: /7KsuYLbvHN/shopee)
-      const path = window.location.pathname;
+      // Tìm tham số ?url= trên thanh địa chỉ
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectUrl = urlParams.get("url");
 
-      // 2. Cắt đường dẫn ra thành các phần bằng dấu gạch chéo '/'
-      const pathParts = path.split("/");
-
-      // Phần tử số 1 chính là mã ID (VD: 7KsuYLbvHN)
-      const shopeeId = pathParts[1];
-
-      // 3. Kiểm tra và chuyển hướng
-      if (shopeeId && shopeeId !== "shopee" && shopeeId !== "index.html") {
-        const finalShopeeLink = "https://s.shopee.vn/" + shopeeId;
-        window.location.href = finalShopeeLink;
+      if (redirectUrl) {
+        // Chuyển hướng khách sang Shopee
+        window.location.href = redirectUrl;
       } else {
         document.body.innerHTML =
-          "<h2 style='text-align:center; margin-top:50px;'>Lỗi: Không tìm thấy liên kết sản phẩm.</h2>";
+          "<h2 style='text-align:center; margin-top:50px;'>Link không hợp lệ!</h2>";
       }
     </script>
   </body>
