@@ -1,3 +1,0 @@
-{
-  "rewrites": [{ "source": "/(.*)/shopee", "destination": "/index.html?id=$1" }]
-}
