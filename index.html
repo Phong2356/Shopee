@@ -50,32 +50,34 @@
     >
 
     <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const idParam = urlParams.get('id');   // Nhận link siêu ngắn
-    const urlParam = urlParams.get('url'); // Nhận link dự phòng
-    
-    // Gắn cứng ID Affiliate của bạn tại đây
-    const affiliateId = "17341920535"; 
+      const urlParams = new URLSearchParams(window.location.search);
+      const idParam = urlParams.get("id"); // Nhận link siêu ngắn
+      const urlParam = urlParams.get("url"); // Nhận link dự phòng
 
-    if (idParam) {
+      // Gắn cứng ID Affiliate của bạn tại đây
+      const affiliateId = "17300480426";
+
+      if (idParam) {
         // Tách ID Shop và ID Sản phẩm
-        const parts = idParam.split('.');
+        const parts = idParam.split(".");
         if (parts.length === 2) {
-            // Tự lắp ráp link gốc
-            const originLink = `https://shopee.vn/product/${parts[0]}/${parts[1]}`;
-            const encodedOrigin = encodeURIComponent(originLink);
-            
-            // Lắp ráp vào công thức Bất tử của Shopee và chuyển hướng
-            window.location.href = `https://s.shopee.vn/an_redir?origin_link=${encodedOrigin}&affiliate_id=${affiliateId}`;
+          // Tự lắp ráp link gốc
+          const originLink = `https://shopee.vn/product/${parts[0]}/${parts[1]}`;
+          const encodedOrigin = encodeURIComponent(originLink);
+
+          // Lắp ráp vào công thức Bất tử của Shopee và chuyển hướng
+          window.location.href = `https://s.shopee.vn/an_redir?origin_link=${encodedOrigin}&affiliate_id=${affiliateId}`;
         } else {
-            document.body.innerHTML = "<h2 style='text-align:center;'>Mã ID không hợp lệ!</h2>";
+          document.body.innerHTML =
+            "<h2 style='text-align:center;'>Mã ID không hợp lệ!</h2>";
         }
-    } else if (urlParam) {
+      } else if (urlParam) {
         // Xử lý link dự phòng (nếu dùng link rút gọn s.shopee)
         window.location.href = urlParam;
-    } else {
-        document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>Không tìm thấy liên kết!</h2>";
-    }
-</script>
+      } else {
+        document.body.innerHTML =
+          "<h2 style='text-align:center; margin-top:50px;'>Không tìm thấy liên kết!</h2>";
+      }
+    </script>
   </body>
 </html>
